@@ -72,6 +72,8 @@ class MainViewModel @Inject constructor(
         facilityState = facilitateList[currentIndex - 1]
         exclusionList[facilityId]?.clear()
 
-        optionsList = facilityState.options
+        optionsList = facilityState.options.filter { opt ->
+            exclusionList[facilityState.facilityId]?.contains(opt.id) == false
+        }
     }
 }
